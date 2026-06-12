@@ -1,0 +1,35 @@
+{
+	"name": "@ceralive/design-tokens",
+	"version": "0.1.0",
+	"description": "CeraLive brand tokens (OKLCH) — single source extracted from CeraUI's Ground Control theme; consumed by marketing, docs, web, and CeraUI.",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CERALIVE/design-tokens.git"
+	},
+	"homepage": "https://github.com/CERALIVE/design-tokens#readme",
+	"bugs": "https://github.com/CERALIVE/design-tokens/issues",
+	"type": "module",
+	"main": "src/index.ts",
+	"types": "src/index.ts",
+	"exports": {
+		".": "./src/index.ts",
+		"./tokens.css": "./tokens.css"
+	},
+	"files": [
+		"src",
+		"tokens.css"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsc --noEmit",
+		"test": "vitest run"
+	},
+	"devDependencies": {
+		"@types/node": "^25.9.2",
+		"typescript": "^6.0.3",
+		"vitest": "^4.1.8"
+	}
+}
