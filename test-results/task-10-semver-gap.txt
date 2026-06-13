@@ -1,0 +1,24 @@
+# Task 10: Semver Gap Analysis
+
+## Requirement
+Verify that consumers pinned to `^0.1.0` will NOT automatically resolve to `2026.6.1`.
+
+## Test
+```bash
+npx semver -r '^0.1.0' 2026.6.1
+```
+
+## Result
+Exit code: 1 (does NOT satisfy)
+
+## Interpretation
+- Old constraint: `^0.1.0` (allows 0.1.0 ≤ version < 0.2.0)
+- New version: `2026.6.1` (major=2026, outside the 0.x range)
+- Consumers MUST bump their dependency to `^2026.6.1` or `2026.6.1` (Tasks 12+13)
+
+## Affected Consumers
+- CeraUI frontend (apps/web, apps/docs, apps/marketing)
+- ceralive-platform (marketing/docs)
+
+## Conclusion
+CalVer bump is a BREAKING CHANGE for semver consumers. This is intentional and expected.
