@@ -25,9 +25,13 @@
 	},
 	"scripts": {
 		"build": "tsc --noEmit",
-		"test": "vitest run"
+		"test": "vitest run",
+		"lint": "biome check .",
+		"format": "biome format --write ."
 	},
 	"devDependencies": {
+		"@biomejs/biome": "^2.5.0",
+		"@ceralive/biome-config": "^2026.6.1",
 		"@types/node": "^25.9.2",
 		"typescript": "^6.0.3",
 		"vitest": "^4.1.8"
