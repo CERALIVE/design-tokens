@@ -53,6 +53,21 @@ describe('tokens.css ↔ TS map parity', () => {
 		// Assert
 		expect(lightOnly).toEqual(['radius']);
 	});
+
+	test('PWA layout tokens are present and identical across light and dark', () => {
+		// Arrange
+		const layout = {
+			'touch-target': '44px',
+			'pull-refresh-offset': '48px',
+			'safe-area-padding': 'max(1rem, env(safe-area-inset-bottom))',
+		} as const;
+
+		// Assert
+		for (const [name, value] of Object.entries(layout)) {
+			expect(lightTokens[name as keyof typeof lightTokens]).toBe(value);
+			expect(darkTokens[name as keyof typeof darkTokens]).toBe(value);
+		}
+	});
 });
 
 describe('linkRamp', () => {
