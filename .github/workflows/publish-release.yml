@@ -22,6 +22,11 @@ on:
         type: boolean
         default: true
 
+# Never cancel an in-flight publish — a half-run release is worse than a queued one.
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
   id-token: write # OIDC identity for npm trusted publishing (+ provenance, public repo)
@@ -31,12 +36,13 @@ jobs:
     name: Test and publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 22 # trusted publishing needs Node >= 22.14
+          node-version: 24 # >= trusted-publishing floor (Node 22.14); CeraLive Node-24 baseline
           registry-url: https://registry.npmjs.org/
+          cache: npm
 
       - name: Upgrade npm to a trusted-publishing-capable version
         run: npm install -g npm@latest # OIDC trusted publishing needs npm >= 11.5.1
@@ -53,7 +59,10 @@ jobs:
           fi
 
       - name: Install
-        run: npm install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
 
       - name: Typecheck
         run: npm run build
