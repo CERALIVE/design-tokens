@@ -46,6 +46,11 @@
 	--ring: oklch(0.4 0.18 128);
 	--radius: 0.5rem;
 
+	/* Layout / PWA structural (mode-invariant; mirrored in .dark) */
+	--touch-target: 44px;
+	--pull-refresh-offset: 48px;
+	--safe-area-padding: max(1rem, env(safe-area-inset-bottom));
+
 	/* Control state — Switch/Toggle/Checkbox OFF track. */
 	--switch-off: oklch(0.66 0.022 150);
 	--switch-off-foreground: oklch(0.99 0.004 150);
@@ -137,6 +142,11 @@
 	--border: oklch(0.28 0.012 150);
 	--input: oklch(0.24 0.01 150);
 	--ring: oklch(0.86 0.2 128);
+
+	/* Layout / PWA structural (mode-invariant; mirrors :root) */
+	--touch-target: 44px;
+	--pull-refresh-offset: 48px;
+	--safe-area-padding: max(1rem, env(safe-area-inset-bottom));
 
 	/* Control state — Switch/Toggle/Checkbox OFF track. */
 	--switch-off: oklch(0.52 0.028 150);
