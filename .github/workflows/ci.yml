@@ -1,0 +1,45 @@
+name: CI
+
+# Required PR gate: the full Node-executed suite (lint, typecheck, tests, build)
+# on the CeraLive Node 26 baseline. Nothing here is allowed to fail softly.
+on:
+  push:
+    branches:
+      - main
+      - "release/**"
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Lint, typecheck, test, build (Node 26)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "26" # CeraLive Node 26 baseline — tracks 26.x through its LTS promotion
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Test (token ↔ CSS parity)
+        run: npm test
+
+      - name: Build
+        run: npm run build

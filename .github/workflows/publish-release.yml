@@ -40,7 +40,7 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 24 # >= trusted-publishing floor (Node 22.14); CeraLive Node-24 baseline
+          node-version: "26" # >= trusted-publishing floor (Node 22.14); CeraLive Node-26 baseline
           registry-url: https://registry.npmjs.org/
           cache: npm
 
