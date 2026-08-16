@@ -50,10 +50,24 @@ npm run format  # biome format --write .
   consumer repo.
 - The e-ink/mono token set is intentionally absent — it is CeraUI-only (reflective device
   displays) and does not belong in the shared palette.
-- Linting/formatting: Biome 2.5 via `@ceralive/biome-config` — ESLint and Prettier are not
-  used. The `biome.json` extends `@ceralive/biome-config` (`"extends": ["@ceralive/biome-config"]`),
-  giving tabs, LF, single quotes, 100-col. Run `npm run lint` (check) or `npm run format`
-  (apply fixes).
+- Linting/formatting: Biome 2.5.8 via `@ceralive/biome-config` 2026.8.0 — ESLint and Prettier are
+  not used. The `biome.json` extends `@ceralive/biome-config` (`"extends": ["@ceralive/biome-config"]`),
+  giving tabs, LF, single quotes, 100-col, and pins its `$schema` to the same Biome patch. Run
+  `npm run lint` (check) or `npm run format` (apply fixes).
+- TypeScript 7 (`typescript@^7.0.2`, the native compiler). This repo has no embedded-language
+  checker (no svelte-check / astro check), so it type-checks with plain `tsc` and was safe to flip.
+  `tsconfig.json` already used `moduleResolution: "bundler"` with no `baseUrl`, so the TS7 removals
+  needed no migration — do not reintroduce `moduleResolution: node`/`node10`/`classic` or `baseUrl`.
+  `types: ["node"]` is set explicitly because TS7 defaults `types` to `[]`.
+
+## CI
+
+Two workflows, both on the CeraLive **Node 26** baseline:
+
+| Workflow | Trigger | Role |
+|----------|---------|------|
+| `ci.yml` | PR + push to `main`/`release/**` + manual | **Required gate** — `npm ci`, lint, `tsc --noEmit`, tests, build. No `continue-on-error`. |
+| `publish-release.yml` | `v*` tag + manual | Re-runs the gate, then publishes to npm via OIDC trusted publishing. |
 
 ## ANTI-PATTERNS
 
