@@ -1,5 +1,6 @@
 {
 	"name": "@ceralive/design-tokens",
+	"packageManager": "bun@1.4.0",
 	"version": "2026.6.1",
 	"description": "CeraLive brand tokens (OKLCH) — single source extracted from CeraUI's Ground Control theme; consumed by marketing, docs, web, and CeraUI.",
 	"license": "MIT",
@@ -25,7 +26,7 @@
 	},
 	"scripts": {
 		"build": "tsc --noEmit",
-		"test": "vitest run",
+		"test": "bun --bun vitest run",
 		"lint": "biome check .",
 		"format": "biome format --write ."
 	},
