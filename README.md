@@ -12,6 +12,19 @@ palette never forks across repos.
 npm i @ceralive/design-tokens
 ```
 
+## Development
+
+This repository uses Bun 1.4.0 for package management and local scripts:
+
+```sh
+bun install
+bun run lint
+bun run build
+bun run test
+```
+
+The release workflow intentionally keeps Node 26 and npm for OIDC publishing.
+
 ## Consumption patterns
 
 The package ships two artifacts: [`tokens.css`](./tokens.css) (the canonical
