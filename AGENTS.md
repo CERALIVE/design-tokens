@@ -36,10 +36,10 @@ design-tokens/
 ## COMMANDS
 
 ```bash
-npm run build   # tsc --noEmit (type-check)
-npm run test    # vitest run — includes drift guard
-npm run lint    # biome check .
-npm run format  # biome format --write .
+ bun run build   # tsc --noEmit (type-check)
+ bun run test    # vitest run — includes drift guard
+ bun run lint    # biome check .
+ bun run format  # biome format --write .
 ```
 
 ## CONVENTIONS
@@ -50,6 +50,8 @@ npm run format  # biome format --write .
   consumer repo.
 - The e-ink/mono token set is intentionally absent — it is CeraUI-only (reflective device
   displays) and does not belong in the shared palette.
+- Package management: Bun 1.4.0 owns installs and the lockfile (`bun install`, `bun.lock`). npm remains
+  only in `publish-release.yml` for Node 26 OIDC publishing.
 - Linting/formatting: Biome 2.5.8 via `@ceralive/biome-config` 2026.8.0 — ESLint and Prettier are
   not used. The `biome.json` extends `@ceralive/biome-config` (`"extends": ["@ceralive/biome-config"]`),
   giving tabs, LF, single quotes, 100-col, and pins its `$schema` to the same Biome patch. Run
@@ -66,7 +68,7 @@ Two workflows, both on the CeraLive **Node 26** baseline:
 
 | Workflow | Trigger | Role |
 |----------|---------|------|
-| `ci.yml` | PR + push to `main`/`release/**` + manual | **Required gate** — `npm ci`, lint, `tsc --noEmit`, tests, build. No `continue-on-error`. |
+| `ci.yml` | PR + push to `main`/`release/**` + manual | **Required gate** — `bun install --frozen-lockfile`, lint, build, tests. No `continue-on-error`. |
 | `publish-release.yml` | `v*` tag + manual | Re-runs the gate, then publishes to npm via OIDC trusted publishing. |
 
 ## ANTI-PATTERNS
