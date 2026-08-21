@@ -52,7 +52,7 @@ design-tokens/
   displays) and does not belong in the shared palette.
 - Package management: Bun 1.4.0 owns installs and the lockfile (`bun install`, `bun.lock`). npm remains
   only in `publish-release.yml` for Node 26 OIDC publishing.
-- Linting/formatting: Biome 2.5.8 via `@ceralive/biome-config` 2026.8.0 — ESLint and Prettier are
+- Linting/formatting: Biome 2.5.9 via `@ceralive/biome-config` 2026.8.0 — ESLint and Prettier are
   not used. The `biome.json` extends `@ceralive/biome-config` (`"extends": ["@ceralive/biome-config"]`),
   giving tabs, LF, single quotes, 100-col, and pins its `$schema` to the same Biome patch. Run
   `npm run lint` (check) or `npm run format` (apply fixes).
