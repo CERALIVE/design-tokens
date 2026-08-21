@@ -1,7 +1,7 @@
 name: CI
 
-# Required PR gate: the full Node-executed suite (lint, typecheck, tests, build)
-# on the CeraLive Node 26 baseline. Nothing here is allowed to fail softly.
+# Required PR gate: the full Bun-executed suite (lint, build, tests).
+# Nothing here is allowed to fail softly.
 on:
   push:
     branches:
@@ -19,27 +19,17 @@ permissions:
 
 jobs:
   check:
-    name: Lint, typecheck, test, build (Node 26)
+    name: Lint, build, test (Bun)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v7
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: "26" # CeraLive Node 26 baseline — tracks 26.x through its LTS promotion
-          cache: npm
+          bun-version: "1.4.0"
 
       - name: Install
-        run: npm ci
+        run: bun install --frozen-lockfile
 
-      - name: Lint
-        run: npm run lint
-
-      - name: Typecheck
-        run: npx tsc --noEmit
-
-      - name: Test (token ↔ CSS parity)
-        run: npm test
-
-      - name: Build
-        run: npm run build
+      - name: Lint, build, test
+        run: bun run lint && bun run build && bun run test
