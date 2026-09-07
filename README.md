@@ -14,7 +14,7 @@ npm i @ceralive/design-tokens
 
 ## Development
 
-This repository uses Bun 1.4.0 for package management and local scripts:
+This repository uses Bun 1.4.2 for package management and local scripts:
 
 ```sh
 bun install
