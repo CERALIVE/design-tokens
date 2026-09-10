@@ -50,7 +50,7 @@ design-tokens/
   consumer repo.
 - The e-ink/mono token set is intentionally absent — it is CeraUI-only (reflective device
   displays) and does not belong in the shared palette.
-- Package management: Bun 1.4.0 owns installs and the lockfile (`bun install`, `bun.lock`). npm remains
+- Package management: Bun 1.4.2 owns installs and the lockfile (`bun install`, `bun.lock`). npm remains
   only in `publish-release.yml` for Node 26 OIDC publishing.
 - Linting/formatting: Biome 2.5.9 via `@ceralive/biome-config` 2026.8.0 — ESLint and Prettier are
   not used. The `biome.json` extends `@ceralive/biome-config` (`"extends": ["@ceralive/biome-config"]`),
