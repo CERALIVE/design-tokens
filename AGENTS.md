@@ -5,8 +5,9 @@ Parent: [`../AGENTS.md`](../AGENTS.md)
 ## ROLE IN THE GROUP
 
 Single source of CeraLive brand tokens (OKLCH). Extracted from CeraUI's "Ground Control"
-theme and published to npm as `@ceralive/design-tokens`. Consumed by the platform
-(`apps/marketing`, `apps/docs`, `apps/web`) and CeraUI — every consumer depends on a
+theme and published to npm as `@ceralive/design-tokens`. Consumed by
+`ceralive-platform` (`apps/web`), `ceralive-website` (ceralive.tv),
+`ceralive-docs` (docs.ceralive.tv) and CeraUI — every consumer depends on a
 published version so the palette never forks across repos.
 
 **Not in the device image.** Not in `REPOS` in `image-building-pipeline/fetch-debs.sh`.

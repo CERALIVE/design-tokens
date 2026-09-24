@@ -2,9 +2,9 @@
 
 Single source of CeraLive brand tokens (OKLCH), extracted from CeraUI's
 "Ground Control" theme. Published to npm as `@ceralive/design-tokens` and
-consumed by the platform (`apps/marketing`, `apps/docs`, `apps/web`) and the
-CeraUI device UI — every consumer depends on a published version, so the
-palette never forks across repos.
+consumed by `ceralive-platform` (`apps/web`), `ceralive-website` (ceralive.tv),
+`ceralive-docs` (docs.ceralive.tv) and CeraUI — every consumer depends on a
+published version, so the palette never forks across repos.
 
 ## Install
 
