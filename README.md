@@ -14,7 +14,7 @@ npm i @ceralive/design-tokens
 
 ## Development
 
-This repository uses Bun 1.4.3 for package management and local scripts:
+This repository uses Bun 1.4.4 for package management and local scripts:
 
 ```sh
 bun install
@@ -104,11 +104,11 @@ switching keeps working; the map is for build-time and headless tooling.
 Three mode-invariant layout tokens (identical in light and dark) support
 PWA / touch shells. They are plain lengths, not colors:
 
-| Token | Value | Use |
-|-------|-------|-----|
-| `--touch-target` | `44px` | Minimum WCAG 2.5.5 touch-target size |
-| `--pull-refresh-offset` | `48px` | Pull-to-refresh travel distance |
-| `--safe-area-padding` | `max(1rem, env(safe-area-inset-bottom))` | Bottom inset on notched / gesture-bar devices |
+| Token                   | Value                                    | Use                                           |
+| ----------------------- | ---------------------------------------- | --------------------------------------------- |
+| `--touch-target`        | `44px`                                   | Minimum WCAG 2.5.5 touch-target size          |
+| `--pull-refresh-offset` | `48px`                                   | Pull-to-refresh travel distance               |
+| `--safe-area-padding`   | `max(1rem, env(safe-area-inset-bottom))` | Bottom inset on notched / gesture-bar devices |
 
 ```css
 .app-shell {
@@ -126,24 +126,24 @@ PWA / touch shells. They are plain lengths, not colors:
 A quick reference to the token families in [`tokens.css`](./tokens.css). See the
 file for the full per-mode values.
 
-| Family | Representative tokens |
-|--------|-----------------------|
-| Surfaces | `--background`, `--foreground`, `--card`, `--popover` |
-| Brand | `--primary`, `--ring`, `--accent`, `--secondary`, `--muted` |
-| Stream status | `--status-live`, `--status-standby`, `--status-idle` |
-| Semantic status | `--status-success`, `--status-info`, `--status-warning`, `--status-error`, `--status-neutral` |
-| Signal quality | `--signal-excellent`, `--signal-good`, `--signal-fair`, `--signal-weak` |
-| Spectral link ramp | `--link-1` … `--link-6`, `--link-bar-empty` |
-| Elevation | `--shadow-sm`, `--shadow-md`, `--shadow-lg` |
-| Gradient endpoints | `--gradient-primary-to`, `--gradient-success-to`, `--gradient-info-to`, `--gradient-destructive-to`, `--gradient-warning-to` |
-| Layout (mode-invariant) | `--radius`, `--touch-target`, `--pull-refresh-offset`, `--safe-area-padding` |
+| Family                  | Representative tokens                                                                                                        |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Surfaces                | `--background`, `--foreground`, `--card`, `--popover`                                                                        |
+| Brand                   | `--primary`, `--ring`, `--accent`, `--secondary`, `--muted`                                                                  |
+| Stream status           | `--status-live`, `--status-standby`, `--status-idle`                                                                         |
+| Semantic status         | `--status-success`, `--status-info`, `--status-warning`, `--status-error`, `--status-neutral`                                |
+| Signal quality          | `--signal-excellent`, `--signal-good`, `--signal-fair`, `--signal-weak`                                                      |
+| Spectral link ramp      | `--link-1` … `--link-6`, `--link-bar-empty`                                                                                  |
+| Elevation               | `--shadow-sm`, `--shadow-md`, `--shadow-lg`                                                                                  |
+| Gradient endpoints      | `--gradient-primary-to`, `--gradient-success-to`, `--gradient-info-to`, `--gradient-destructive-to`, `--gradient-warning-to` |
+| Layout (mode-invariant) | `--radius`, `--touch-target`, `--pull-refresh-offset`, `--safe-area-padding`                                                 |
 
 ## Dist-tags
 
-| Tag | Channel | Pin |
-|-----|---------|-----|
-| `@latest` | Current stable release. What `npm i @ceralive/design-tokens` installs by default. | Consumers pin this. |
-| `@next` | Preview / release candidate carrying unreleased token changes for early integration. | `npm i @ceralive/design-tokens@next` |
+| Tag       | Channel                                                                              | Pin                                  |
+| --------- | ------------------------------------------------------------------------------------ | ------------------------------------ |
+| `@latest` | Current stable release. What `npm i @ceralive/design-tokens` installs by default.    | Consumers pin this.                  |
+| `@next`   | Preview / release candidate carrying unreleased token changes for early integration. | `npm i @ceralive/design-tokens@next` |
 
 Released versions follow CalVer (`YYYY.MINOR.PATCH`); see
 [`CHANGELOG.md`](./CHANGELOG.md).

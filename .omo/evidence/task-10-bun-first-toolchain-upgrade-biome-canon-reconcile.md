@@ -15,10 +15,10 @@ F1 reviewer flagged it independently, twice.
 
 Verified against the live registry, not assumed:
 
-| Package | `npm view … version` | Canon target | Reachable today? |
-| --- | --- | --- | --- |
-| `@biomejs/biome` | `2.5.9` | `2.5.9` | yes |
-| `@ceralive/biome-config` | `2026.8.0` | `2026.8.1` | **no** |
+| Package                  | `npm view … version` | Canon target | Reachable today? |
+| ------------------------ | -------------------- | ------------ | ---------------- |
+| `@biomejs/biome`         | `2.5.9`              | `2.5.9`      | yes              |
+| `@ceralive/biome-config` | `2026.8.0`           | `2026.8.1`   | **no**           |
 
 `npm view @ceralive/biome-config versions --json` returns exactly
 `["1.0.0","2026.6.1","2026.6.2","2026.8.0"]`. Version `2026.8.1` exists only as an
@@ -36,11 +36,11 @@ error: @ceralive/biome-config@^2026.8.1 failed to resolve
 
 Pinning style preserved — this repo uses caret ranges, so caret ranges were kept.
 
-| File | Before | After |
-| --- | --- | --- |
-| `package.json` | `"@biomejs/biome": "^2.5.8"` | `"@biomejs/biome": "^2.5.9"` |
-| `biome.json` | `$schema` `…/2.5.8/schema.json` | `$schema` `…/2.5.9/schema.json` |
-| `AGENTS.md` | "Biome 2.5.8 via `@ceralive/biome-config` 2026.8.0" | "Biome 2.5.9 via `@ceralive/biome-config` 2026.8.0" |
+| File           | Before                                              | After                                               |
+| -------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `package.json` | `"@biomejs/biome": "^2.5.8"`                        | `"@biomejs/biome": "^2.5.9"`                        |
+| `biome.json`   | `$schema` `…/2.5.8/schema.json`                     | `$schema` `…/2.5.9/schema.json`                     |
+| `AGENTS.md`    | "Biome 2.5.8 via `@ceralive/biome-config` 2026.8.0" | "Biome 2.5.9 via `@ceralive/biome-config` 2026.8.0" |
 
 The `AGENTS.md` line is included per Rule A — this repo states its Biome canon in
 prose, and that sentence also promises the `$schema` is pinned to "the same Biome
@@ -58,13 +58,13 @@ Writing `^2026.8.1` today would make `bun install` unresolvable and the gate red
 
 Run from the repo root under Bun 1.4.0. All commands exited zero.
 
-| Command | Result |
-| --- | --- |
-| `bun install` | `+ @biomejs/biome@2.5.9`, 3 packages, lockfile saved |
-| `bun x biome --version` | `Version: 2.5.9` |
-| `bun run lint` | `Checked 7 files in 27ms. No fixes applied.` |
-| `bun run build` | clean (`tsc --noEmit`, no diagnostics) |
-| `bun run test` | `Test Files 1 passed (1)`, `Tests 5 passed (5)` (vitest 4.1.10 under `--bun`) |
+| Command                 | Result                                                                        |
+| ----------------------- | ----------------------------------------------------------------------------- |
+| `bun install`           | `+ @biomejs/biome@2.5.9`, 3 packages, lockfile saved                          |
+| `bun x biome --version` | `Version: 2.5.9`                                                              |
+| `bun run lint`          | `Checked 7 files in 27ms. No fixes applied.`                                  |
+| `bun run build`         | clean (`tsc --noEmit`, no diagnostics)                                        |
+| `bun run test`          | `Test Files 1 passed (1)`, `Tests 5 passed (5)` (vitest 4.1.10 under `--bun`) |
 
 The 5 tests include the `tokens.css` ↔ TS-map drift guard, which is the gate that
 would fail if the palette and its typed mirror diverged.
