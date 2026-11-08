@@ -4,6 +4,7 @@ Parent: https://github.com/CERALIVE/ceralive/blob/master/AGENTS.md
 
 <!-- workspace-hard-rules:begin -->
 ## Workspace hard rules (identical in every CeraLive AGENTS.md)
+
 - Commits and PRs carry the human author only: no Co-authored-by, no AI attribution.
 - Start from the updated canonical branch; rebase to update; never `reset --hard` or discard others' work.
 - One focused PR per repo, opened against CERALIVE/<repo>; the root policy PR merges first.
@@ -40,11 +41,11 @@ design-tokens/
 
 ## WHERE TO LOOK
 
-| Task | Location |
-|------|----------|
-| CSS token values (canonical) | `tokens.css` |
-| TS token map + types | `src/index.ts` |
-| Drift guard test | `src/tokens.test.ts` |
+| Task                         | Location             |
+| ---------------------------- | -------------------- |
+| CSS token values (canonical) | `tokens.css`         |
+| TS token map + types         | `src/index.ts`       |
+| Drift guard test             | `src/tokens.test.ts` |
 
 ## COMMANDS
 
@@ -63,9 +64,9 @@ design-tokens/
   consumer repo.
 - The e-ink/mono token set is intentionally absent — it is CeraUI-only (reflective device
   displays) and does not belong in the shared palette.
-- Package management: Bun 1.4.3 owns installs and the lockfile (`bun install`, `bun.lock`). npm remains
+- Package management: Bun 1.4.4 owns installs and the lockfile (`bun install`, `bun.lock`). npm remains
   only in `publish-release.yml` for Node 26 OIDC publishing.
-- Linting/formatting: Biome 2.5.9 via `@ceralive/biome-config` 2026.8.0 — ESLint and Prettier are
+- Linting/formatting: Biome 2.6.6 via `@ceralive/biome-config` 2026.11.0 — ESLint and Prettier are
   not used. The `biome.json` extends `@ceralive/biome-config` (`"extends": ["@ceralive/biome-config"]`),
   giving tabs, LF, single quotes, 100-col, and pins its `$schema` to the same Biome patch. Run
   `npm run lint` (check) or `npm run format` (apply fixes).
@@ -79,10 +80,10 @@ design-tokens/
 
 Two workflows, both on the CeraLive **Node 26** baseline:
 
-| Workflow | Trigger | Role |
-|----------|---------|------|
-| `ci.yml` | PR + push to `main`/`release/**` + manual | **Required gate** — `bun install --frozen-lockfile`, lint, build, tests. No `continue-on-error`. |
-| `publish-release.yml` | `v*` tag + manual | Re-runs the gate, then publishes to npm via OIDC trusted publishing. |
+| Workflow              | Trigger                                   | Role                                                                                             |
+| --------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `ci.yml`              | PR + push to `main`/`release/**` + manual | **Required gate** — `bun install --frozen-lockfile`, lint, build, tests. No `continue-on-error`. |
+| `publish-release.yml` | `v*` tag + manual                         | Re-runs the gate, then publishes to npm via OIDC trusted publishing.                             |
 
 ## ANTI-PATTERNS
 
